@@ -1,2 +1,0 @@
-web: bin/start-pgbouncer-stunnel slc run --cluster 3
-clock: node server/clock.js
