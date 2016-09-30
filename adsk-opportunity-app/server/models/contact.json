@@ -1,0 +1,50 @@
+{
+  "name": "Contact",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "contactEmail": {
+      "type": "string"
+    },
+    "contactCSN": {
+      "type": "string"
+    },
+    "accountCSN": {
+      "type": "string"
+    },
+    "contactLanguage": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "faxNumber": {
+      "type": "string"
+    },
+    "countryOfResidence": {
+      "type": "string"
+    },
+    "shippingAccountId":{
+    	"type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

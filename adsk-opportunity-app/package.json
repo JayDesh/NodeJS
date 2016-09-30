@@ -1,0 +1,51 @@
+{
+  "name": "eis-opportunity-api",
+  "version": "1.0.0",
+  "main": "server/server.js",
+  "engines": {
+     "node": "0.12.7"
+  }, "scripts": {
+	"start": "node server/server.js",
+    "pretest": "jshint ."
+  },
+  "dependencies": {
+    "bluebird": "^2.10.2",
+    "chai": "^3.3.0",
+    "color": "^0.10.1",
+    "colors": "^1.1.2",
+    "compression": "^1.0.3",
+    "cors": "^2.5.2",
+    "debug": "^2.2.0",
+    "errorhandler": "^1.1.1",
+    "exec": "^0.2.1",
+    "json-mask": "^0.3.4",
+    "loopback": "^2.14.0",
+    "loopback-boot": "^2.6.5",
+    "loopback-datasource-juggler": "^2.19.0",
+    "moment": "^2.10.6",
+    "node-cache": "^3.0.0",
+    "node-uuid": "^1.4.3",
+    "path": "^0.11.14",
+    "pg": "^4.4.0",
+    "pg-native": "^1.8.1",
+    "promise": "^7.0.4",
+    "request": "^2.60.0",
+    "serve-favicon": "^2.0.1",
+    "sinon": "^1.17.1",
+    "strong-express-metrics": "^1.1.0",
+    "supertest": "^1.1.0",
+    "underscore": "^1.8.3",
+    "winston": "^1.1.0"
+  },
+  "optionalDependencies": {
+    "loopback-explorer": "^1.1.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.5.6"
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "description": "eis-opportunity-api"
+}

@@ -1,0 +1,38 @@
+{
+  "name": "Opportunity",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "OpportunityId": {
+      "type": "string"
+    },
+    "RenewalTerm": {
+      "type": "string"
+    },
+    "RequestRenewalFlag": {
+      "type": "boolean"
+    },
+    "PONumber": {
+      "type": "string"
+    },
+    "DealerPONumber": {
+      "type": "string"
+    },
+    "Status": {
+      "type": "string"
+    },
+    "Type": {
+      "type": "string"
+    },
+    "Renewal_Term_UOM": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

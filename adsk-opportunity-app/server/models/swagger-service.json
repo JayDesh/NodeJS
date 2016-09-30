@@ -1,0 +1,20 @@
+{
+  "name": "swagger_service",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "http": {
+    "path": "service"
+  },
+  "properties": { 
+    "test":{
+      "type":"string"
+    }   
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

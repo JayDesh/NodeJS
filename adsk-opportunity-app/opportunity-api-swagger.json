@@ -1,0 +1,330 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ROM Opportunity API",
+    "description": "Opportunity API is read only set of APIs which gives access to various opportunity related entities like Opportunity,Opportunity Line Item,Contract Line Item,Agreement etc",
+    "version": "1.0.0"
+  },
+  "host": "enterprise-api.autodesk.com",
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/service",
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/opportunity": {
+      "get": {
+        "summary": "Returns Opportunity Details",
+        "description": "Endpoint lets user search for opportunity based on opportunity number or agreement number example A-123451 / 110000330137",
+        "operationId":"findByOpportunityNumber",
+        "parameters": [
+          {
+            "name": "requestData",
+            "in": "body",
+            "description": "Let users get opportunity details by Opportunity Number",
+            "type": "data",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns Opportunity Details.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Opportunity"
+              }
+            }
+          },
+          "default": {
+            "description": "error response",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/v1/agreement": {
+      "get": {
+        "summary": "Returns list of Opportunities based on given agreement number",
+        "description": "Endpoint lets user search for opportunity based on agreement number example 110000330137",
+        "operationId":"findByAgreementNumber",
+        "parameters": [
+          {
+            "name": "AgreementNumber",
+            "in": "body",
+            "description": "Returns list of opportunity details based on agreement number given",
+            "type": "data",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An List of Opportunities based on agreement.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Opportunity"
+              }
+            }
+          },
+          "default": {
+            "description": "error response",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Opportunity":{
+	    "properties": {
+		    "OpportunityId": {
+		      "type": "string"
+		    },
+		    "RenewalTerm": {
+		      "type": "string"
+		    },
+		    "RequestRenewalFlag": {
+		      "type": "boolean"
+		    },
+		    "PONumber": {
+		      "type": "string"
+		    },
+		    "DealerPONumber": {
+		      "type": "string"
+		    },
+		    "Status": {
+		      "type": "string"
+		    },
+		    "Type": {
+		      "type": "string"
+		    },
+		    "Renewal_Term_UOM": {
+		      "type": "string"
+		    }
+		  }
+	  },
+	  "OpportunityLineItem":{
+		  "properties": {
+		    "id": {
+		      "type": "string"
+		    },
+		    "quantity": {
+		      "type": "number"
+		    },
+		    "groupName": {
+		      "type": "string"
+		    },
+		    "seats": {
+		      "type": "number"
+		    },
+		    "productName": {
+		      "type": "string"
+		    },
+		    "productCode": {
+		      "type": "string"
+		    },
+		    "productType": {
+		      "type": "string"
+		    },
+		    "productDescription": {
+		      "type": "string"
+		    },
+		    "status": {
+		      "type": "string"
+		    },
+		    "SRP": {
+		      "type": "number"
+		    },
+		    "totalSRP": {
+		      "type": "number"
+		    },
+		    "partNumber": {
+		      "type": "string"
+		    },
+		    "licenseType": {
+		      "type": "string"
+		    },
+		    "licenseModel": {
+		      "type": "string"
+		    },
+		    "assetNumber": {
+		      "type": "string"
+		    },
+		    "serialNumber": {
+		      "type": "string"
+		    },
+		    "itemNumber": {
+		      "type": "string"
+		    },
+		    "subscriptionLevel": {
+		      "type": "string"
+		    },
+		    "programType": {
+		      "type": "string"
+		    },
+		    "specialSalesProgramType": {
+		      "type": "string"
+		    },
+		    "materialGroup": {
+		      "type": "string"
+		    },
+		    "serviceType": {
+		      "type": "string"
+		    },
+		    "serviceSalesType": {
+		      "type": "string"
+		    },
+		    "usageType": {
+		      "type": "string"
+		    },
+		    "endUserType": {
+		      "type": "string"
+		    },
+		    "contractTerm": {
+		      "type": "string"
+		    },
+		    "billingBehavior": {
+		      "type": "string"
+		    },
+		    "CQS": {
+		      "type": "string"
+		    }
+		  }
+	  },
+	   "Account": {
+		   "properties": {
+		    "id": {
+		      "type": "string"
+		    },
+		    "role": {
+		      "type": "string"
+		    },
+		    "accountName": {
+		      "type": "string"
+		    },
+		    "accountCSN": {
+		      "type": "string"
+		    },
+		    "languageCode": {
+		      "type": "string"
+		    }
+		  }
+	  },
+	  "Contact": {
+		  "properties": {
+		    "id": {
+		      "type": "string"
+		    },
+		    "contactEmail": {
+		      "type": "string"
+		    },
+		    "contactCSN": {
+		      "type": "string"
+		    },
+		    "accountCSN": {
+		      "type": "string"
+		    },
+		    "contactLanguage": {
+		      "type": "string"
+		    },
+		    "firstName": {
+		      "type": "string"
+		    },
+		    "lastName": {
+		      "type": "string"
+		    },
+		    "role": {
+		      "type": "string"
+		    },
+		    "phoneNumber": {
+		      "type": "string"
+		    },
+		    "faxNumber": {
+		      "type": "string"
+		    },
+		    "countryOfResidence": {
+		      "type": "string"
+		    },
+		    "shippingAccountId":{
+		    	"type": "string"
+		    }
+		  }
+	  },
+	  "Agreement": {
+	  	"properties": {
+		    "AgreementId": {
+		      "type": "string"
+		    },
+		    "ExpirationDate": {
+		      "type": "date"
+		    },
+		    "FutureEndDate": {
+		      "type": "date"
+		    },
+		    "RenewalTerm": {
+		      "type": "string"
+		    },
+		    "StartDate": {
+		      "type": "date"
+		    },
+		    "Status": {
+		      "type": "string"
+		    },
+		    "assetEndDate": {
+		      "type": "date"
+		    }
+		  }
+	  },
+	  "Address": {
+	  "properties": {
+	    "addressLine1": {
+	      "type": "string"
+	    },
+	    "city": {
+	      "type": "string"
+	    },
+	    "country": {
+	      "type": "string"
+	    },
+	    "postalCode": {
+	      "type": "string"
+	    },
+	    "state": {
+	      "type": "string"
+	    },
+	    "countryOfResidense":{
+	      "type":"string"
+	    }
+	  }
+	  }, 
+      "Error": {
+      "properties": {
+        "errorCode": {
+          "type": "string",
+          "description": "Error code corresponding to the error."
+        },
+        "message": {
+          "type": "string",
+          "description": "Any descriptive message associated with the error."
+        },
+        "details": {
+          "type": "string",
+          "description": "This could be any additioal details associated with the error. If in debug mode, this could be the application code stack trace."
+        }
+      }
+    }
+  }
+}
+

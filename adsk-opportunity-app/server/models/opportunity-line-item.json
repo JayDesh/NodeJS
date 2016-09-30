@@ -1,0 +1,98 @@
+{
+  "name": "OpportunityLineItem",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "number"
+    },
+    "groupName": {
+      "type": "string"
+    },
+    "seats": {
+      "type": "number"
+    },
+    "productName": {
+      "type": "string"
+    },
+    "productCode": {
+      "type": "string"
+    },
+    "productType": {
+      "type": "string"
+    },
+    "productDescription": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "SRP": {
+      "type": "number"
+    },
+    "totalSRP": {
+      "type": "number"
+    },
+    "partNumber": {
+      "type": "string"
+    },
+    "licenseType": {
+      "type": "string"
+    },
+    "licenseModel": {
+      "type": "string"
+    },
+    "assetNumber": {
+      "type": "string"
+    },
+    "serialNumber": {
+      "type": "string"
+    },
+    "itemNumber": {
+      "type": "string"
+    },
+    "subscriptionLevel": {
+      "type": "string"
+    },
+    "programType": {
+      "type": "string"
+    },
+    "specialSalesProgramType": {
+      "type": "string"
+    },
+    "materialGroup": {
+      "type": "string"
+    },
+    "serviceType": {
+      "type": "string"
+    },
+    "serviceSalesType": {
+      "type": "string"
+    },
+    "usageType": {
+      "type": "string"
+    },
+    "endUserType": {
+      "type": "string"
+    },
+    "contractTerm": {
+      "type": "string"
+    },
+    "billingBehavior": {
+      "type": "string"
+    },
+    "CQS": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

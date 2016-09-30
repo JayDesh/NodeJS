@@ -1,0 +1,26 @@
+{
+  "name": "Error",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "errorCode": {
+      "type": "string",
+      "description": "Error code corresponding to the error."
+    },
+    "message": {
+      "type": "string",
+      "description": "Any descriptive message associated with the error."
+    },
+    "details": {
+      "type": "string",
+      "description": "This could be any additioal details associated with the error. If in debug mode, this could be the application code stack trace."
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
