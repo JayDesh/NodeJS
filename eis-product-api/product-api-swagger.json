@@ -1,0 +1,400 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "EIS Product API",
+    "description": "Product API is read only set of APIs which gives access to various product related entities like Product Line Code, EFiles and Skus.",
+    "version": "1.0.0"
+  },
+  "host": "enterprise-api.autodesk.com",
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/service",
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/products/v1/skus": {
+      "get": {
+        "summary": "Returns Skus details for matching plcvs or skus",
+        "description": "Endpoint lets user search for skus based on set of pclvs (Product Line Code Versions) or retrieve data for various skus.",
+        "parameters": [
+          {
+            "name": "skus",
+            "in": "query",
+            "description": "Comma separated list of skus whose details to be returned. For ex., `978G1-EFG000-0101E` or `978G1-EFG000-0101E,978G1-EFG000-0101E,978G1-EFG000-0101E`. Either skus or plcvs parameters needs to be specified. If both are present, skus parameter takes the precedence.",
+            "type": "array",
+            "required": true,
+            "collectionFormat": "csv",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "type": "string",
+            "description": "Json mask [https://github.com/nemtsov/json-mask] compatible list of model fields to return in the response"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of skus.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Sku"
+              }
+            }
+          },
+          "default": {
+            "description": "error response",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/products/v1/efinishes": {
+      "get": {
+        "summary": "Returns list of active Efinishes and its active files for matching list of Product Line Codes and Versions (plcvs)",
+        "description": "Returns an array of active Efinishes and its active efiles for matching set of Product Line Code/Versions. If there are no efinishes matching given plcvs, then returns an empty array. If a particular efinish or efile is inactive, then those are not returned. By default only efinishes whose download end date is or later than today is returned. If you would like to retrieve all efinishes including the expired ones, specify `includeExpired=true` parameter.",
+        "parameters": [
+          {
+            "name": "plcvs",
+            "in": "query",
+            "description": "Comma separated list of Product Line Code/Versions for which all matching skus would need to be returned. For ex., `ACD-2016` or `ACD-2016,MAYA-2015`. Product line codes are case insensitive as system will always convert to Upper case before lookup.",
+            "type": "array",
+            "required": true,
+            "collectionFormat": "csv",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "includeExpired",
+            "in": "query",
+            "type": "boolean",
+            "description": "By default only the efinishes whose download end date equals to today or later than today are returned. If you specify this flag, all active efinishes, including expired ones are returned."
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "type": "string",
+            "description": "Json mask (https://github.com/nemtsov/json-mask) compatible list of model fields to return in the response"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of Efinishes.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Efinish"
+              }
+            }
+          },
+          "default": {
+            "description": "error response",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "query"
+    }
+  },
+  "definitions": {
+    "Sku": {
+      "properties": {
+        "sku": {
+          "type": "string",
+          "description": "Sku part number. For ex., 978G1-EFG000-0101E"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the sku as configured in the source system."
+        },
+        "description": {
+          "type": "string",
+          "description": "description of this sku"
+        },
+        "status": {
+          "type": "string",
+          "description": "status of the sku"
+        },
+        "fcsDate": {
+          "type": "string",
+          "description": "The date when this sku becomes available for customers",
+          "format": "date"
+        },
+        "productKey": {
+          "type": "string",
+          "description": "Product key associated with this product. Product key used as part of the activation along with Serial numbers (for non-clic enabled products)"
+        },
+        "productLineCode": {
+          "type": "string",
+          "description": "Product line code of the sku. For ex., ACD, MAYA"
+        },
+        "version": {
+          "type": "string",
+          "description": "Product Version. For ex., 2015 or 2016."
+        },
+        "activationCodeRequired": {
+          "type": "boolean",
+          "description": "Indicates of this product requires activation code to successfully activate the product."
+        },
+        "assetModification": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "billingBehavior": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "bundle": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "contractTerm": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "deploymentType": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "desktopRenewalSkuKey": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "endUserType": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "fertCertificate": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "languageCode": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "licenseModel": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "licenseType": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "lockingMechanism": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "maintenanceRenewalSkuKey": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "materialGroup": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "media": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "nfrUseCode": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "productBehavior": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "programType": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "registrationMethod": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "releaseType": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "salesLicenseType": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "salesProgramType": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "sequenceExtension": {
+          "type": "string",
+          "description": "<Add description and example values>"
+        },
+        "serviceLimit": {
+          "type": "string",
+          "description": "Service Limit. <Add example values>"
+        },
+        "serviceSalesType": {
+          "type": "string",
+          "description": "Service sales type."
+        },
+        "serviceType": {
+          "type": "string",
+          "description": "Type of the service"
+        },
+        "subscriptionLevel": {
+          "type": "string",
+          "description": "Level of the subscription."
+        },
+        "supportEndDate": {
+          "type": "string",
+          "description": "Date when the support ends for this product"
+        },
+        "supportStartDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date when support for this product starts"
+        },
+        "upgradable": {
+          "type": "boolean",
+          "description": "Indicates if this sku can be upgraded"
+        },
+        "usageType": {
+          "type": "string",
+          "description": "Usage type of the sku. For ex., (Com, Edu)"
+        }
+      }
+    },
+    "Efinish": {
+      "properties": {
+        "efinishId": {
+          "type": "string",
+          "description": "Unique identifier for this efinish."
+        },
+        "productLineCode": {
+          "type": "string",
+          "description": "Product line code to which this efinish belongs to"
+        },
+        "version": {
+          "type": "string",
+          "description": "Main release of the product. This is also called product version."
+        },
+        "downloadEndDate": {
+          "type": "string",
+          "description": "This is the Last date when this product can be downloaded from hosted location. After this date, this efile will be deleted from the hosted repository and clients should not allowed to download it. Date is in standard ISO 8601 date format. For ex., `2018-04-23`",
+          "format": "date"
+        },
+        "efiles": {
+          "type": "array",
+          "description": "List of efiles belongs to this efinish.",
+          "items": {
+            "$ref": "#/definitions/Efile"
+          }
+        }
+      }
+    },
+    "Efile": {
+      "properties": {
+        "efileId": {
+          "type": "string",
+          "description": "this is the unique key which identifies the efile"
+        },
+        "productLineCode": {
+          "type": "string",
+          "description": "Product Line Code of this Efile. For ex., `ACD` or `MAYA`"
+        },
+        "version": {
+          "type": "string",
+          "description": "Product Major Release. This is typically 4 digit year like `2016` or `2017`"
+        },
+        "subRelease": {
+          "type": "string",
+          "description": "Product sub release."
+        },
+        "productLanguageCodes": {
+          "type": "array",
+          "description": "Two digit Language code of the product. If this efile is not non language specific sku, then it would be `WW`. For ex., `[\"EINT\"]` or `[\"FR\", \"IT\"]`",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fileDescription": {
+          "type": "string",
+          "description": "Description associated with the efile. This typically describes the efile in customer friendly format. For ex., `Autodesk Design Academy Suite 2015 French Win 32bit` or `Autodesk Entertainment Creation Suite Ultimate 2016 Multilingual Win 64bit`"
+        },
+        "platform": {
+          "type": "string",
+          "description": "Platform to which this efile is applicable for. Some valid values are `Win 32/64` or `Win 32` or `Win 64` or `Linux 32` or `Linux 64` or `Mac 32` or `Mac 32/64` or `Mac 64`"
+        },
+        "contentType": {
+          "type": "string",
+          "description": "(Need to understand more about this). For ex., `PSW` or `LP` or `DOC` or `SUP`"
+        },
+        "fileNameWithPath": {
+          "type": "string",
+          "description": "File name with path. This path is relative to hosting path. For ex., `/NET16SWDLD/2016/PDSPRM/DLM/Autodesk_Plant_Design_Suite_premium_2016_English_Win_64bit_DLM_001_006.sfx.exe` or `/NET16SWDLD/2016/DSADV/WI/ADS_Ultimate_2016_English_Win_32_64bit_WI_en-us_Setup.exe`"
+        },
+        "packedFileSize": {
+          "type": "integer",
+          "description": "Size of the packaged file in bytes."
+        },
+        "unpackedFileSize": {
+          "type": "integer",
+          "description": "Size of the unpackged file in bytes."
+        },
+        "checksum": {
+          "type": "string",
+          "description": "Checksum of the efile. For ex., `B58DF49A675A36DE7027B65B2DA57AB3` or `87E75A92DDF5C859AC353D6B65C2F067`"
+        },
+        "downloadMethod": {
+          "type": "string",
+          "description": "Supported download method for this efile. For ex., `IN` (Install Now) or `DN` (Download Now) or `BR` (Browser Download) or `DB` (Not sure what this is)"
+        },
+        "productName": {
+          "type": "string",
+          "description": "Name of the product with which this eFile is associated."
+        }
+      }
+    },
+    "Error": {
+      "properties": {
+        "errorCode": {
+          "type": "string",
+          "description": "Error code corresponding to the error."
+        },
+        "message": {
+          "type": "string",
+          "description": "Any descriptive message associated with the error."
+        },
+        "details": {
+          "type": "string",
+          "description": "This could be any additioal details associated with the error. If in debug mode, this could be the application code stack trace."
+        }
+      }
+    }
+  }
+}

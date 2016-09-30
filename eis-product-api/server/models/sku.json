@@ -1,0 +1,176 @@
+{
+  "name": "Sku",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "sku": {
+      "type": "string",
+      "description": "Sku part number. For ex., 978G1-EFG000-0101E"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the sku as configured in the source system."
+    },
+    "description": {
+      "type": "string",
+      "description": "description of this sku"
+    },
+    "status": {
+      "type": "string",
+      "description": "status of the sku"
+    },
+    "fcsDate": {
+      "type": "string",
+      "description": "The date when this sku becomes available for customers",
+      "format": "date"
+    },
+    "productKey": {
+      "type": "string",
+      "description": "Product key associated with this product. Product key used as part of the activation along with Serial numbers (for non-clic enabled products)"
+    },
+    "productLineCode": {
+      "type": "string",
+      "description": "Product line code of the sku. For ex., ACD, MAYA"
+    },
+    "productVersion": {
+      "type": "string",
+      "description": "Product Version. For ex., 2015 or 2016."
+    },
+    "activationCodeRequired": {
+      "type": "boolean",
+      "description": "Indicates of this product requires activation code to successfully activate the product."
+    },
+    "assetModification": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "billingBehavior": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "bundle": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "contractTerm": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "deploymentType": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "desktopRenewalSkuKey": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "endUserType": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "fertCertificate": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "languageCode": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "licenseModel": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "licenseType": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "lockingMechanism": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "maintenanceRenewalSkuKey": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "materialGroup": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "media": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "nfrUseCode": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "productBehavior": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "programType": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "registrationMethod": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "releaseType": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "salesLicenseType": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "salesProgramType": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "sequenceExtension": {
+      "type": "string",
+      "description": "<Add description and example values>"
+    },
+    "serviceLimit": {
+      "type": "string",
+      "description": "Service Limit. <Add example values>"
+    },
+    "serviceSalesType": {
+      "type": "string",
+      "description": "Service sales type."
+    },
+    "serviceType": {
+      "type": "string",
+      "description": "Type of the service"
+    },
+    "subscriptionLevel": {
+      "type": "string",
+      "description": "Level of the subscription."
+    },
+    "supportEndDate": {
+      "type": "string",
+      "description": "Date when the support ends for this product"
+    },
+    "supportStartDate": {
+      "type": "string",
+      "description": "Date when support for this product starts",
+      "format": "date"
+    },
+    "upgradable": {
+      "type": "boolean",
+      "description": "Indicates if this sku can be upgraded"
+    },
+    "usageType": {
+      "type": "string",
+      "description": "Usage type of the sku. For ex., (Com, Edu)"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
